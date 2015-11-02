@@ -12,7 +12,7 @@ Trainer.delete_all
 Message.delete_all
 
 
-garfield = User.create(
+User.create(
   email:                 "bob.garfield@gmail.com",
   handle:                "garfield minus morality",
   profile_image_uri:     "https://goo.gl/RhIeZE",
