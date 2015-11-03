@@ -2,7 +2,7 @@ class CreateSchedules < ActiveRecord::Migration
   def change
     create_table :schedules do |t|
       t.string :title, null: false
-      t.string :description, null: false
+      t.text :description, null: false
       t.string :area_focus
       t.date :start_date, default: Time.new
       t.date :end_date
