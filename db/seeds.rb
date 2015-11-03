@@ -11,74 +11,83 @@ Schedule.delete_all
 Trainer.delete_all
 Message.delete_all
 
-# User creation
-a = User.new(
-  email:                 "jo1@gmail.com",
-  account_name:          "jo1",
-  image_uri:             "https://goo.gl/RhIeZE",
-  password:              "1234",
-  password_confirmation: "1234"
-)
-a.save
+# while loop user creation for mass users testing
+i= 0
+num=10
+while i < num do
+  acct_tmp = 'jo' + i.to_s
+  email_tmp = 'jo' +i.to_s
+  email_tmp +='@gmail.com'
+  add_tmp = i.to_s + ' road'
+  curr_tmp = 200 + i
+  goal_tmp = 180 + i
+  height_tmp = 170 + i
 
-b = User.new(
-  email:                 "jo2@gmail.com",
-  account_name:          "jo2",
-  password:              "1234",
-  password_confirmation: "1234"
-)
-b.save
-
-c = User.new(
-  email:                 "jo3@gmail.com",
-  account_name:          "jo3",
-  password:              "1234",
-  password_confirmation: "1234"
-)
-c.save
-
-# Trainers creation
-at = Trainer.new(
-  email:                 "tjo1@gmail.com",
-  account_name:          "tjo1",
-  image_uri:             "https://goo.gl/RhIeZE",
-  password:              "1234",
-  password_confirmation: "1234"
-)
-at.save
-
-bt = Trainer.new(
-  email:                 "tjo2@gmail.com",
-  account_name:          "tjo2",
-  password:              "1234",
-  password_confirmation: "1234"
-)
-bt.save
-
-ct = Trainer.new(
-  email:                 "tjo3@gmail.com",
-  account_name:          "tjo3",
-  password:              "1234",
-  password_confirmation: "1234"
-)
-ct.save
+  User.create("account_name" => acct_tmp, "email" => email_tmp,
+    "password" => '1234', "password_confirmation" =>'1234',
+    "first_name" => acct_tmp, "last_name" => acct_tmp,
+    'middle_name' => acct_tmp, "image_uri" => "https://goo.gl/RhIeZE",
+    'address1' => add_tmp, 'city' => 'West Covina',
+    'zip' => 99999, "current_weight" => curr_tmp,
+    "goal_weight" => goal_tmp, "height" => height_tmp)
+  i+= 1
+end
 
 
-# Messages creation
-M1 = Message.create(title: 'Testing1', content: 'Testing content 1')
-M2 = Message.create(title: 'Testing2', content: 'Testing content 2')
-M3 = Message.create(title: 'Testing3', content: 'Testing content 3')
+# While loop mass trainers creation
+i= 0
+num=10
+while i < num do
+  acct_tmp = 'trainerjo' + i.to_s
+  email_tmp = 'trainerjo' +i.to_s
+  email_tmp +='@gmail.com'
+  add_tmp = i.to_s + ' road'
 
-# Schedules creation
-S1 = Schedule.create(title: 'Schedule title', description: 'Testing description 1', area_focus: 'Shoulders & Arms')
-S2 = Schedule.create(title: 'Schedule title2', description: 'Testing description 2', area_focus: 'Shoulders & Arms2')
-S3 = Schedule.create(title: 'Schedule title3', description: 'Testing description 3', area_focus: 'Shoulders & Arms3')
+  Trainer.create("account_name" => acct_tmp, "email" => email_tmp,
+    "password" => '1234', "password_confirmation" =>'1234',
+    "first_name" => acct_tmp, "last_name" => acct_tmp,
+    'middle_name' => acct_tmp, "image_uri" => "https://goo.gl/RhIeZE",
+    'address1' => add_tmp, 'city' => 'West Covina',
+    'zip' => 99999)
+  i+= 1
+end
 
-a.messages << M2
-a.schedules << S1
-a.save
-ct.users << a
-ct.messages << M1
-ct.save
 
+# While loop mass messages creations and injection into User
+i= 0
+num=10
+while i < num do
+  title_tmp = 'Message Title Testing ' + i.to_s
+  content_tmp = 'Message Content Testing ' + i.to_s
+  User.find(i+1).messages << Message.create(title: title_tmp, content: content_tmp)
+   Trainer.find(i+1).messages << Message.create(title: title_tmp, content: content_tmp)
+
+  i+= 1
+end
+
+# Mass Schedules creation and injection into Users
+i= 0
+num=10
+while i < num do
+  title_tmp = 'Schedule Title Testing ' + i.to_s
+  description_tmp = 'Schedule description Testing ' + i.to_s
+  area_tmp = 'Shoulders & Arms' + i.to_s
+
+  User.find(i+1).schedules << Schedule.create(title: title_tmp,
+    description: description_tmp, area_focus: area_tmp,
+    frequency_interval: 7)
+    Trainer.find(i+1).schedules << Schedule.create(title: title_tmp,
+    description: description_tmp, area_focus: area_tmp,
+    frequency_interval: 7)
+  i+= 1
+end
+
+# Mass injection from users into trainers
+i = 0
+num = 10
+while i < num do
+  tmp = User.find(i+1)
+  Trainer.find(i+1).users << tmp
+  i+=1
+end
 

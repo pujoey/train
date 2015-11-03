@@ -2,8 +2,8 @@ class Trainer < ActiveRecord::Base
   has_secure_password
 
   # db relationships
-  has_many :sessions
   has_many :messages
+  has_many :schedules
   has_many :users
 
 

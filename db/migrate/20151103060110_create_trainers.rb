@@ -12,6 +12,7 @@ class CreateTrainers < ActiveRecord::Migration
       t.string :address2
       t.string :city
       t.integer :zip
+      t.integer :user_id
 
       t.timestamps null: false
     end
