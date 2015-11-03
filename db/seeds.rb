@@ -7,23 +7,33 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.delete_all
-Session.delete_all
-Trainer.delete_all
-Message.delete_all
+# Session.delete_all
+# Trainer.delete_all
+# Message.delete_all
 
 
-User.create(
-  email:                 "bob.garfield@gmail.com",
-  handle:                "garfield minus morality",
-  profile_image_uri:     "https://goo.gl/RhIeZE",
-  # password:              "123",
-  # password_confirmation: "123"
+a = User.new(
+  email:                 "jo1@gmail.com",
+  account_name:          "jo1",
+  image_uri:             "https://goo.gl/RhIeZE",
+  password:              "1234",
+  password_confirmation: "1234"
 )
+a.save
 
-book_list = [
-  {isbn: "9487123", title: "Catcher in the Rye",  author: "JD Salinger", edition: 2, has_read: true},
-  {isbn: "4328974", title: "Catch Me If You Can", author: "Someone",     edition: 1, has_read: false},
-  {isbn: "1239410", title: "Rye Rye Rye",         author: "Beth Samson", edition: 4, has_read: false},
-]
+b = User.new(
+  email:                 "jo2@gmail.com",
+  account_name:          "jo2",
+  password:              "1234",
+  password_confirmation: "1234"
+)
+b.save
 
-Book.create book_list
+c = User.new(
+  email:                 "jo3@gmail.com",
+  account_name:          "jo3",
+  password:              "1234",
+  password_confirmation: "1234"
+)
+c.save
+
