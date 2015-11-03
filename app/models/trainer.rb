@@ -4,7 +4,8 @@ class Trainer < ActiveRecord::Base
   # db relationships
   has_many :sessions
   has_many :messages
-  belongs_to :trainer
+  has_many :users
+
 
   validates :email, presence: true, uniqueness: true
   validates :account_name, presence: true, uniqueness: true

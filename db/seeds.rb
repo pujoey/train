@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.delete_all
-# Session.delete_all
+Schedule.delete_all
 Trainer.delete_all
 Message.delete_all
 
@@ -63,14 +63,22 @@ ct = Trainer.new(
 )
 ct.save
 
+
 # Messages creation
 M1 = Message.create(title: 'Testing1', content: 'Testing content 1')
 M2 = Message.create(title: 'Testing2', content: 'Testing content 2')
 M3 = Message.create(title: 'Testing3', content: 'Testing content 3')
 
-# Sessions creation
+# Schedules creation
+S1 = Schedule.create(title: 'Schedule title', description: 'Testing description 1', area_focus: 'Shoulders & Arms')
+S2 = Schedule.create(title: 'Schedule title2', description: 'Testing description 2', area_focus: 'Shoulders & Arms2')
+S3 = Schedule.create(title: 'Schedule title3', description: 'Testing description 3', area_focus: 'Shoulders & Arms3')
 
-
-
+a.messages << M2
+a.schedules << S1
+a.save
+ct.users << a
+ct.messages << M1
+ct.save
 
 

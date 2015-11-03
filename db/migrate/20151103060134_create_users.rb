@@ -17,6 +17,11 @@ class CreateUsers < ActiveRecord::Migration
       t.date :reach_goal_by
       t.integer :height
 
+      # Set relationship
+      # t.belongs_to :trainer, index: true,
+      t.integer :trainer_id
+      t.references :trainer, index: true, foreign_key: true
+
       t.timestamps null: false
     end
   end

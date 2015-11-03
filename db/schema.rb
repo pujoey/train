@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103005345) do
+ActiveRecord::Schema.define(version: 20151103061541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,20 +19,30 @@ ActiveRecord::Schema.define(version: 20151103005345) do
   create_table "messages", force: :cascade do |t|
     t.string   "title",      null: false
     t.string   "content",    null: false
+    t.integer  "trainer_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.string   "name",               null: false
-    t.string   "description",        null: false
+  add_index "messages", ["trainer_id"], name: "index_messages_on_trainer_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
+  create_table "schedules", force: :cascade do |t|
+    t.string   "title",                                     null: false
+    t.string   "description",                               null: false
     t.string   "area_focus"
-    t.date     "start_date"
+    t.date     "start_date",         default: '2015-11-03'
     t.date     "end_date"
     t.string   "frequency_interval"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "trainer_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
+
+  add_index "schedules", ["trainer_id"], name: "index_schedules_on_trainer_id", using: :btree
+  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
 
   create_table "trainers", force: :cascade do |t|
     t.string   "account_name",                                          null: false
@@ -51,13 +61,13 @@ ActiveRecord::Schema.define(version: 20151103005345) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "account_name"
+    t.string   "account_name",                                          null: false
     t.string   "password_digest"
-    t.string   "email"
+    t.string   "email",                                                 null: false
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
-    t.string   "image_uri"
+    t.string   "image_uri",       default: "default-profile-image.jpg"
     t.string   "address1"
     t.string   "address2"
     t.string   "city"
@@ -66,8 +76,16 @@ ActiveRecord::Schema.define(version: 20151103005345) do
     t.integer  "goal_weight"
     t.date     "reach_goal_by"
     t.integer  "height"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "trainer_id"
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
   end
 
+  add_index "users", ["trainer_id"], name: "index_users_on_trainer_id", using: :btree
+
+  add_foreign_key "messages", "trainers"
+  add_foreign_key "messages", "users"
+  add_foreign_key "schedules", "trainers"
+  add_foreign_key "schedules", "users"
+  add_foreign_key "users", "trainers"
 end
