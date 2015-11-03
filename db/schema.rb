@@ -11,10 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102232445) do
+ActiveRecord::Schema.define(version: 20151103005345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.string   "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string   "name",               null: false
+    t.string   "description",        null: false
+    t.string   "area_focus"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "frequency_interval"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "trainers", force: :cascade do |t|
+    t.string   "account_name",                                          null: false
+    t.string   "password_digest"
+    t.string   "email",                                                 null: false
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "image_uri",       default: "default-profile-image.jpg"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.integer  "zip"
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "account_name"

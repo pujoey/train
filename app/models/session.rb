@@ -1,0 +1,7 @@
+class Session < ActiveRecord::Base
+
+# define relationship
+  belongs_to :user
+  belongs_to :trainer
+
+end

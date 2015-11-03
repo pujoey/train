@@ -8,10 +8,10 @@
 
 User.delete_all
 # Session.delete_all
-# Trainer.delete_all
-# Message.delete_all
+Trainer.delete_all
+Message.delete_all
 
-
+# User creation
 a = User.new(
   email:                 "jo1@gmail.com",
   account_name:          "jo1",
@@ -36,4 +36,41 @@ c = User.new(
   password_confirmation: "1234"
 )
 c.save
+
+# Trainers creation
+at = Trainer.new(
+  email:                 "tjo1@gmail.com",
+  account_name:          "tjo1",
+  image_uri:             "https://goo.gl/RhIeZE",
+  password:              "1234",
+  password_confirmation: "1234"
+)
+at.save
+
+bt = Trainer.new(
+  email:                 "tjo2@gmail.com",
+  account_name:          "tjo2",
+  password:              "1234",
+  password_confirmation: "1234"
+)
+bt.save
+
+ct = Trainer.new(
+  email:                 "tjo3@gmail.com",
+  account_name:          "tjo3",
+  password:              "1234",
+  password_confirmation: "1234"
+)
+ct.save
+
+# Messages creation
+M1 = Message.create(title: 'Testing1', content: 'Testing content 1')
+M2 = Message.create(title: 'Testing2', content: 'Testing content 2')
+M3 = Message.create(title: 'Testing3', content: 'Testing content 3')
+
+# Sessions creation
+
+
+
+
 
