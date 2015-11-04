@@ -1,25 +1,22 @@
 
 
-<h1>Messages</h1>
+<br>
+<div class="container panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Messages</div>
+  <!-- Table -->
+  <table class="table">
+  <% @messages.each do |message| %>
+        <tr>
+          <td><%= message.title %></td>
+          <% if Time.now.strftime('%v') == message.updated_at.strftime("%v") %>
+            <td><%= message.updated_at.strftime("%I:%M %P") %></td>
+          <% else %>
+            <td><%= message.updated_at.strftime("%h %g") %></td>
+          <% end %>
+          <td><%= message.content %></td>
+        </tr>
+  <% end %>
+  </table>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan='6'></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @messages.each do |message| %>
-      <tr>
-        <td><%= message.title %></td>
-        <td><%= message.content %></td>
-        <% if current_user && current_user[:id] == message.user_id  %>
-        <td><%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
