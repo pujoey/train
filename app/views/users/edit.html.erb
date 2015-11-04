@@ -1,5 +1,4 @@
-<br>
-<br>
+<% provide(:title, "Edit user") %>
 
 <div class="container form-signin">
 
@@ -15,22 +14,18 @@
       </div>
     <% end %>
 
-    <h2 class="form-signin-heading">New User Sign Up</h2>
+    <h2 class="form-signin-heading">Update Your Profile</h2>
 
+    <div class= 'text-center'>
+    <%= image_tag(current_user.image_uri, size: "100x128") %>
+    </div>
+    <br>
     <div class="field">
       <%= f.text_field :account_name, class: 'form-control', placeholder: 'Account Name' %>
     </div>
 
     <div class="field">
       <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
-    </div>
-
-    <div class="field">
-      <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
-    </div>
-
-    <div class="field">
-      <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password Confirmation' %>
     </div>
 
     <div class="field">
@@ -85,3 +80,5 @@
   <% end %>
 
 </div>
+
+<!-- http://localhost:3000/users/edit?id=1 -->
