@@ -3,10 +3,6 @@
 <head>
   <title>Train</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <!-- table builder testing -->
-  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
-  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
-
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -32,16 +28,16 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-left">
+
           <!-- navbar menus -->
-          <% if current_user.class == User.first.class %>
+          <% if current_user.class == User.last.class %>
           <li><%= link_to "Progress", user_path(current_user) %></li>
-          <li><%= link_to "Session History", schedules_path %></li>
+          <li><%= link_to "Schedule & Calendar", schedules_path %></li>
           <li><%= link_to "Messages", messages_path %></li>
-          <li><a href="#">Calendar</a></li>
           <li><%= link_to "Profile", edit_user_path(current_user) %></li>
           <% end %>
 
-          <% if current_user.class == Trainer.first.class %>
+          <% if current_user.class == Trainer.last.class %>
           <li><%= link_to "TrainerProgress", user_path(current_user) %></li>
           <li><%= link_to "Session History", schedules_path %></li>
           <li><%= link_to "Messages", messages_path %></li>
@@ -63,10 +59,7 @@
     </div>
   </nav>
 
-
-  <div class="container">
     <%= yield %>
-  </div>
 
 </body>
 </html>

@@ -1,11 +1,14 @@
+<div class='container'>
 <br>
-<div class="container panel panel-default">
+<div class="panel panel-primary">
   <!-- Default panel contents -->
-  <div class="panel-heading">Workout Sessions History <%= link_to 'New Schedule', new_schedule_path, class: 'right'%></div>
+  <div class="panel-heading">Schedules</div>
 
 
   <!-- Table -->
   <table class="table">
+  <!-- create new schedule -->
+  &nbsp;&nbsp;<%= link_to 'New', new_schedule_path, class: 'glyphicon glyphicon-bell' %>
   <!-- Messages in descending order most recent ones first -->
   <% @schedules.order(id: :desc).each do |schedule| %>
         <tr>
@@ -17,8 +20,9 @@
           <% end %>
           <td class="col-md-2"><%= schedule.title %></td>
           <td class="col-md-2"><%= schedule.area_focus %></td>
-          <td class="col-md-5"><%= schedule.description %></td>
-          <td class="col-md-5"><%= link_to "Edit", edit_schedule_path(schedule) %></td>
+          <td class="col-md-4"><%= schedule.description %></td>
+          <td class="col-md-1"><%= link_to "Edit", edit_schedule_path(schedule) %></td>
+          <td class="col-md-1"><%= link_to "Destroy", schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
   <% end %>
   </table>
@@ -27,11 +31,13 @@
 <!-- calendar table in html -->
 <section id="calendar">
   <h2 id="month">
+    <div>
     <%= link_to "<", month: last_month %>
     <%= this_month %>
     <%= link_to ">", month: next_month %>
+    </div>
   </h2>
-  <table class='table table-bordered'>
+  <table class='table table-condensed info'>
     <thead>
       <tr>
         <th>Sun</th>
@@ -49,7 +55,7 @@
           <td>
             <%= @current_day_number = day_number(i, j) %>
             <% if current_user.all_dates.include? Date.parse("#{@current_day_number} #{this_month}") %>
-              WORK OUT!
+              <p class='text-center'>WORK OUT!</p>
             <% end %>
           </td>
         <% end %>
@@ -57,4 +63,6 @@
     <% end %>
   </table>
 </section>
+
+</div>
 

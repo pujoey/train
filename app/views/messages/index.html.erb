@@ -1,24 +1,26 @@
 
 
 <br>
-<div class="container panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Messages</div>
-  <!-- Table -->
-  <table class="table">
-  <!-- Messages in descending order most recent ones first -->
-  <% @messages.order(id: :desc).each do |message| %>
-        <tr>
-          <!-- format message time to Hour:Min if its today or date if it's not today -->
-          <% if Time.now.strftime('%v') == message.updated_at.strftime("%v") %>
-            <td class="col-md-1"><%= message.updated_at.strftime("%I:%M %P") %></td>
-          <% else %>
-            <td class="col-md-1"><%= message.updated_at.strftime("%h %g") %></td>
-          <% end %>
-          <td class="col-md-3"><%= message.title %></td>
-          <td class="col-md-8"><%= message.content %></td>
-        </tr>
-  <% end %>
-  </table>
+<div class='container'>
+  <div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <!-- Table -->
+    <div class="panel-heading">Messages</div>
+    <table class="table">
+    <!-- Messages in descending order most recent ones first -->
+    <% @messages.order(id: :desc).each do |message| %>
+          <tr>
+            <!-- format message time to Hour:Min if its today or date if it's not today -->
+            <% if Time.now.strftime('%v') == message.updated_at.strftime("%v") %>
+              <td class="col-md-1"><%= message.updated_at.strftime("%I:%M %P") %></td>
+            <% else %>
+              <td class="col-md-1"><%= message.updated_at.strftime("%h %g") %></td>
+            <% end %>
+            <td class="col-md-3"><%= message.title %></td>
+            <td class="col-md-8"><%= message.content %></td>
+          </tr>
+    <% end %>
+    </table>
+  </div>
 </div>
 

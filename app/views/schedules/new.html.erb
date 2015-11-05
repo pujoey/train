@@ -1,48 +1,49 @@
 <br>
 <br>
+<div class='container'>
+  <div class="panel panel-primary form-signin">
 
-<div class="container form-signin">
+    <%= form_for @schedule do |f| %>
+      <% if @schedule.errors.any? %>
+        <div class="alert alert-success error_messages">
+          <p>Form is invalid</p>
+          <ul>
+            <% for message in @schedule.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <%= form_for @schedule do |f| %>
-    <% if @schedule.errors.any? %>
-      <div class="alert alert-success error_messages">
-        <p>Form is invalid</p>
-        <ul>
-          <% for message in @schedule.errors.full_messages %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+      <h3 class="form-signin-heading">New Workout Session</h3>
+
+      <div class="field">
+        <%= f.text_field :title, class: 'form-control', placeholder: 'Session Title' %>
       </div>
+
+      <div class="field">
+        <%= f.text_field :description, class: 'form-control', placeholder: 'Description' %>
+      </div>
+
+      <div class="field">
+        <%= f.text_field :area_focus, class: 'form-control', placeholder: 'Body Area Focus' %>
+      </div>
+
+      <div class="field">
+        <%= f.date_field :start_date, class: 'form-control', placeholder: 'Begin Date' %>
+      </div>
+
+      <div class="field">
+        <%= f.date_field :end_date, class: 'form-control', placeholder: 'End Date' %>
+      </div>
+
+      <div class="field">
+        <%= f.number_field :frequency_interval, class: 'form-control', placeholder: 'Frequency Interval' %>
+      </div>
+
+      <br>
+      <div class="actions"><%= f.submit class: "btn btn-lg btn-primary btn-block" %></div>
     <% end %>
 
-    <h3 class="form-signin-heading">New Workout Session</h3>
-
-    <div class="field">
-      <%= f.text_field :title, class: 'form-control', placeholder: 'Session Title' %>
-    </div>
-
-    <div class="field">
-      <%= f.text_field :description, class: 'form-control', placeholder: 'Description' %>
-    </div>
-
-    <div class="field">
-      <%= f.text_field :area_focus, class: 'form-control', placeholder: 'Body Area Focus' %>
-    </div>
-
-    <div class="field">
-      <%= f.date_field :start_date, class: 'form-control', placeholder: 'Begin Date' %>
-    </div>
-
-    <div class="field">
-      <%= f.date_field :end_date, class: 'form-control', placeholder: 'End Date' %>
-    </div>
-
-    <div class="field">
-      <%= f.number_field :frequency_interval, class: 'form-control', placeholder: 'Frequency Interval' %>
-    </div>
-
-    <br>
-    <div class="actions"><%= f.submit class: "btn btn-lg btn-primary btn-block" %></div>
-  <% end %>
-
+  </div>
 </div>
