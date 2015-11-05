@@ -14,8 +14,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     if @schedule.save
       # injection into current_user.schedules
-      User.find(current_user).schedules << @schedule
-      current_user.all_dates
+      current_user.schedules << @schedule
       flash[:notice] = "You have successfully create a new schedule!"
       redirect_to schedules_path
     else
@@ -29,7 +28,6 @@ class SchedulesController < ApplicationController
 
   def update
     @schedule = Schedule.find(params[:id])
-    current_user.all_dates
 
     respond_to do |format|
       if @schedule.update(schedule_params)

@@ -21,8 +21,8 @@
   <!-- Messages in descending order most recent ones first -->
   <% @schedules.order(id: :desc).each do |schedule| %>
         <tr>
-          <td class="col-md-1"><%= schedule.start_date.strftime("%h %g %a") %></td>
-          <td class="col-md-1"><%= schedule.end_date.strftime("%h %g %a") %></td>
+          <td class="col-md-2"><%= schedule.start_date.strftime("%h %d %a") %></td>
+          <td class="col-md-2"><%= schedule.end_date.strftime("%h %d %a") %></td>
           <td class="col-md-1"><%= schedule.frequency_interval %></td>
           <td class="col-md-2"><%= schedule.title %></td>
           <td class="col-md-2"><%= schedule.area_focus %></td>
