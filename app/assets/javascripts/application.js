@@ -16,6 +16,3 @@
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require_tree .
-
-console.log('application.js linked');
-$('body').height(document.documentElement.clientHeight);
