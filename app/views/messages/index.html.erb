@@ -6,15 +6,17 @@
   <div class="panel-heading">Messages</div>
   <!-- Table -->
   <table class="table">
-  <% @messages.each do |message| %>
+  <!-- Messages in descending order most recent ones first -->
+  <% @messages.order(id: :desc).each do |message| %>
         <tr>
-          <td><%= message.title %></td>
+          <!-- format message time to Hour:Min if its today or date if it's not today -->
           <% if Time.now.strftime('%v') == message.updated_at.strftime("%v") %>
-            <td><%= message.updated_at.strftime("%I:%M %P") %></td>
+            <td class="col-md-1"><%= message.updated_at.strftime("%I:%M %P") %></td>
           <% else %>
-            <td><%= message.updated_at.strftime("%h %g") %></td>
+            <td class="col-md-1"><%= message.updated_at.strftime("%h %g") %></td>
           <% end %>
-          <td><%= message.content %></td>
+          <td class="col-md-3"><%= message.title %></td>
+          <td class="col-md-8"><%= message.content %></td>
         </tr>
   <% end %>
   </table>

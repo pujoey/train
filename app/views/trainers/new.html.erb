@@ -1,0 +1,72 @@
+<br>
+<br>
+
+<div class="container form-signin">
+
+  <%= form_for @trainer do |f| %>
+    <% if @trainer.errors.any? %>
+      <div class="alert alert-success error_messages">
+        <p>Form is invalid</p>
+        <ul>
+          <% for message in @trainer.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h2 class="form-signin-heading">New trainer Sign Up</h2>
+
+    <div class="field">
+      <%= f.text_field :account_name, class: 'form-control', placeholder: 'Account Name' %>
+    </div>
+
+    <div class="field">
+      <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password Confirmation' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :middle_name, class: 'form-control', placeholder: 'Middle Name' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :image_uri, class: 'form-control', placeholder: 'Image URI' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :address1, class: 'form-control', placeholder: 'Address 1' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :address2, class: 'form-control', placeholder: 'Address 2' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :city, class: 'form-control', placeholder: 'City' %>
+    </div>
+
+    <div class="field">
+      <%= f.number_field :zip, class: 'form-control', placeholder: 'Zip Code' %>
+    </div>
+
+    <br>
+    <div class="actions"><%= f.submit class: "btn btn-lg btn-primary btn-block" %></div>
+  <% end %>
+
+</div>

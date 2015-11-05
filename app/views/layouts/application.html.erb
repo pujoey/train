@@ -3,6 +3,10 @@
 <head>
   <title>Train</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- table builder testing -->
+  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
+
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -30,8 +34,8 @@
         <ul class="nav navbar-nav navbar-left">
           <!-- navbar menus -->
           <% if current_user %>
-          <li><a href="#">Progress</a></li>
-          <li><a href="#">Session History</a></li>
+          <li><%= link_to "Progress", user_path(current_user) %></li>
+          <li><%= link_to "Session History", schedules_path %></li>
           <li><%= link_to "Messages", messages_path %></li>
           <li><a href="#">Calendar</a></li>
           <li><%= link_to "Profile", edit_user_path(current_user) %></li>
@@ -52,7 +56,9 @@
   </nav>
 
 
-<%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
