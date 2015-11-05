@@ -32,8 +32,6 @@ gem 'bootstrap_form'  # if you want bootstrap forms!
 
 gem 'rails_12factor', group: :production
 
-gem "watu_table_builder", :require => "table_builder"
-
 
 # Use Unicorn as the app server
 # gem 'unicorn'
