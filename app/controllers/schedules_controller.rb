@@ -15,7 +15,8 @@ class SchedulesController < ApplicationController
     if @schedule.save
       # injection into current_user.schedules
       User.find(current_user).schedules << @schedule
-      flash[:notice] = "You have successfully signed up!"
+      current_user.all_dates
+      flash[:notice] = "You have successfully create a new schedule!"
       redirect_to schedules_path
     else
       render new_schedule_path
@@ -28,9 +29,11 @@ class SchedulesController < ApplicationController
 
   def update
     @schedule = Schedule.find(params[:id])
+    current_user.all_dates
+
     respond_to do |format|
       if @schedule.update(schedule_params)
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully updated.' }
+        format.html { redirect_to schedules_path, notice: 'Schedule was successfully updated.' }
       else
         format.html { render :edit }
       end

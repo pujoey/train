@@ -4,20 +4,24 @@
   <!-- Default panel contents -->
   <div class="panel-heading">Schedules</div>
 
-
   <!-- Table -->
-  <table class="table">
+  <table class="table table-hover">
   <!-- create new schedule -->
   &nbsp;&nbsp;<%= link_to 'New', new_schedule_path, class: 'glyphicon glyphicon-bell' %>
+
+  <thead>
+    <th>Begins</th>
+    <th>Ends</th>
+    <th>Title</th>
+    <th>Area Focus</th>
+    <th>Description</th>
+  </thead>
+
   <!-- Messages in descending order most recent ones first -->
   <% @schedules.order(id: :desc).each do |schedule| %>
         <tr>
-          <!-- format message time to Hour:Min if its today or date if it's not today -->
-          <% if Time.now.strftime('%v') == schedule.updated_at.strftime("%v") %>
-            <td class="col-md-1"><%= schedule.updated_at.strftime("%I:%M %P") %></td>
-          <% else %>
-            <td class="col-md-1"><%= schedule.updated_at.strftime("%h %g %a") %></td>
-          <% end %>
+          <td class="col-md-1"><%= schedule.start_date.strftime("%h %g %a") %></td>
+          <td class="col-md-1"><%= schedule.start_date.strftime("%h %g %a") %></td>
           <td class="col-md-2"><%= schedule.title %></td>
           <td class="col-md-2"><%= schedule.area_focus %></td>
           <td class="col-md-4"><%= schedule.description %></td>
@@ -31,11 +35,9 @@
 <!-- calendar table in html -->
 <section id="calendar" class='panel panel-primary text-center'>
   <h2 id="month">
-    <div>
     <%= link_to "<", month: last_month %>
     <%= this_month %>
     <%= link_to ">", month: next_month %>
-    </div>
   </h2>
   <table class='table table-bordered table-responsive'>
     <thead>
@@ -52,7 +54,7 @@
     <% number_of_weeks.times do |i| %>
       <tr>
         <% 7.times do |j| %>
-          <td class="col-sm-1">
+          <td class="col-sm-1 text-left">
             <%= @current_day_number = day_number(i, j) %>
             <% if current_user.all_dates.include? Date.parse("#{@current_day_number} #{this_month}") %>
               <p>WORK OUT!</p>
