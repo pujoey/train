@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20151103175239) do
     t.string   "title",                                     null: false
     t.text     "description",                               null: false
     t.string   "area_focus"
-    t.date     "start_date",         default: '2015-11-03'
+    t.date     "start_date",         default: '2015-11-05'
     t.date     "end_date"
     t.string   "frequency_interval"
     t.integer  "trainer_id"
