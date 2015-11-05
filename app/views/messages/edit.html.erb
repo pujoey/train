@@ -1,0 +1,31 @@
+<br>
+<br>
+
+<div class="container form-signin">
+
+  <%= form_for @message do |f| %>
+    <% if @message.errors.any? %>
+      <div class="alert alert-success error_messages">
+        <p>Form is invalid</p>
+        <ul>
+          <% for message in @message.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h3 class="form-signin-heading">Edit Message</h3>
+
+    <div class="field">
+      <%= f.text_field :title, class: 'form-control', placeholder: 'Message Title' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :content, class: 'form-control', placeholder: 'Content' %>
+    </div>
+    <br>
+    <div class="actions"><%= f.submit class: "btn btn-lg btn-primary btn-block" %></div>
+  <% end %>
+
+</div>

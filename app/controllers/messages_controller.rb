@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
 
   def index
-    @messages = Trainer.find(current_user).messages
+      @messages = current_user.messages
   end
 
   def new
@@ -11,11 +11,27 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.save
-      Trainer.find(current_user.trainer_id).messages << @messages
-      flash[:notice] = "You have successfully signed up!"
+      current_user.messages << @message
+      flash[:notice] = "New message!"
       redirect_to messages_path
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @message = Message.find(params[:id])
+  end
+
+  def update
+    @message = Message.find(params[:id])
+
+    respond_to do |format|
+      if @message.update(message_params)
+        format.html { redirect_to messages_path, notice: 'Message was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
@@ -30,7 +46,7 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:account_name, :password, :password_confirmation, :email, :first_name, :middle_man, :last_name, :image_uri, :address1, :address2, :city, :zip, :current_weight, :goal_weight, :reach_goal_by, :height)
+    params.require(:message).permit(:title, :content)
   end
 
 end

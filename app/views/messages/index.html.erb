@@ -4,23 +4,33 @@
 <div class='container'>
   <div class="panel panel-primary">
     <!-- Default panel contents -->
-    <!-- Table -->
     <div class="panel-heading">Messages</div>
-    <table class="table">
+    <!-- Table -->
+    <table class="table table-hover">
+    <!-- create new schedule -->
+    &nbsp;&nbsp;<%= link_to 'New', new_message_path, class: 'glyphicon glyphicon-envelope' %>
+
+    <thead>
+      <th>Received</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Title</th>
+
+    </thead>
     <!-- Messages in descending order most recent ones first -->
     <% @messages.order(id: :desc).each do |message| %>
-          <tr>
-            <!-- format message time to Hour:Min if its today or date if it's not today -->
-            <% if Time.now.strftime('%v') == message.updated_at.strftime("%v") %>
-              <td class="col-md-1"><%= message.updated_at.strftime("%I:%M %P") %></td>
-            <% else %>
-              <td class="col-md-1"><%= message.updated_at.strftime("%h %g") %></td>
-            <% end %>
-            <td class="col-md-3"><%= message.title %></td>
-            <td class="col-md-8"><%= message.content %></td>
-            <td class="col-md-1"><%= link_to "Edit", edit_message_path(message) %></td>
-            <td class="col-md-1"><%= link_to "Destroy", message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
+      <tr>
+        <!-- format message time to Hour:Min if its today or date if it's not today -->
+        <% if Time.now.strftime('%v') == message.updated_at.strftime("%v") %>
+          <td class="col-md-1"><%= message.updated_at.strftime("%I:%M %P") %></td>
+        <% else %>
+          <td class="col-md-1"><%= message.updated_at.strftime("%h %g") %></td>
+        <% end %>
+        <td class="col-md-3"><%= message.title %></td>
+        <td class="col-md-8"><%= message.content %></td>
+        <td class="col-md-1"><%= link_to "Edit", edit_message_path(message) %></td>
+        <td class="col-md-1"><%= link_to "Destroy", message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
     </table>
   </div>
