@@ -29,7 +29,7 @@
 </div>
 
 <!-- calendar table in html -->
-<section id="calendar">
+<section id="calendar" class='panel panel-primary text-center'>
   <h2 id="month">
     <div>
     <%= link_to "<", month: last_month %>
@@ -37,7 +37,7 @@
     <%= link_to ">", month: next_month %>
     </div>
   </h2>
-  <table class='table table-condensed info'>
+  <table class='table table-bordered info'>
     <thead>
       <tr>
         <th>Sun</th>
@@ -55,7 +55,7 @@
           <td>
             <%= @current_day_number = day_number(i, j) %>
             <% if current_user.all_dates.include? Date.parse("#{@current_day_number} #{this_month}") %>
-              <p class='text-center'>WORK OUT!</p>
+              <p>WORK OUT!</p>
             <% end %>
           </td>
         <% end %>

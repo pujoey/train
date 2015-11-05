@@ -30,6 +30,7 @@
         <ul class="nav navbar-nav navbar-left">
 
           <!-- navbar menus -->
+          <!-- testing if current_user is from User class -->
           <% if current_user.class == User.last.class %>
           <li><%= link_to "Progress", user_path(current_user) %></li>
           <li><%= link_to "Schedule & Calendar", schedules_path %></li>
@@ -37,6 +38,7 @@
           <li><%= link_to "Profile", edit_user_path(current_user) %></li>
           <% end %>
 
+          <!-- testing if current_user is from Trainer class -->
           <% if current_user.class == Trainer.last.class %>
           <li><%= link_to "TrainerProgress", user_path(current_user) %></li>
           <li><%= link_to "Session History", schedules_path %></li>
@@ -59,7 +61,7 @@
     </div>
   </nav>
 
-    <%= yield %>
+<%= yield %>
 
 </body>
 </html>

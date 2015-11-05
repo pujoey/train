@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :trainers
-  resources :users, only: [:new, :create, :update, :show, :edit]
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :users
+  resources :sessions
   resources :messages
   resources :schedules
   get '/login', to: 'sessions#new'

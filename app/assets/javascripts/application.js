@@ -17,7 +17,3 @@
 //= require bootstrap
 //= require_tree .
 
-// calenddar testing
-$(function() {
-  $("#schedule_start_date").datepicker();
-});
