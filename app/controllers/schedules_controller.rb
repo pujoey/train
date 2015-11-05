@@ -1,8 +1,7 @@
 class SchedulesController < ApplicationController
 
   def index
-    @schedules = User.find(current_user).schedules
-
+    @schedules = current_user.schedules
     # calendar testing
     calendar_month
   end

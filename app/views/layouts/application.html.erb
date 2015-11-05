@@ -33,8 +33,16 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-left">
           <!-- navbar menus -->
-          <% if current_user %>
+          <% if current_user.class == User.first.class %>
           <li><%= link_to "Progress", user_path(current_user) %></li>
+          <li><%= link_to "Session History", schedules_path %></li>
+          <li><%= link_to "Messages", messages_path %></li>
+          <li><a href="#">Calendar</a></li>
+          <li><%= link_to "Profile", edit_user_path(current_user) %></li>
+          <% end %>
+
+          <% if current_user.class == Trainer.first.class %>
+          <li><%= link_to "TrainerProgress", user_path(current_user) %></li>
           <li><%= link_to "Session History", schedules_path %></li>
           <li><%= link_to "Messages", messages_path %></li>
           <li><a href="#">Calendar</a></li>

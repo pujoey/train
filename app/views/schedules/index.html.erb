@@ -23,7 +23,7 @@
   <% end %>
   </table>
 </div>
-<%# binding.pry %>
+
 <!-- calendar table in html -->
 <section id="calendar">
   <h2 id="month">
@@ -47,7 +47,10 @@
       <tr>
         <% 7.times do |j| %>
           <td>
-            <%= day_number(i, j) %>
+            <%= @current_day_number = day_number(i, j) %>
+            <% if current_user.all_dates.include? Date.parse("#{@current_day_number} #{this_month}") %>
+              WORK OUT!
+            <% end %>
           </td>
         <% end %>
       </tr>
@@ -55,28 +58,3 @@
   </table>
 </section>
 
-<!-- calendar testing
-<div id="calendar">
-
-  <% calendar_for @schedules, :year => @date.year, :month => @date.month do |calendar| %>
-    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
-    <% calendar.day(:day_method => :start_date) do |date, schedules| %>
-      <%= date.day %>
-      <ul>
-        <% for schedule in schedules %>
-          <li><%= link_to h(schedule.title), schedule %></li>
-        <% end %>
-      </ul>
-    <% end %>
-  <% end %>
-</div>
-<!-- calendar testing 2
-<div id="calendar">
-  <% calendar_for @schedules do | calendar | %>
-    <% calendar.day(:day_method => :start_date) do | date, schedules | %>
-      <%= date.day %>
-    <% end %>
-  <% end %>
-</div>
-
- -->

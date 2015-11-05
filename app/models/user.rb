@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :account_name, presence: true, uniqueness: true
   validates :password, length: { in: 4..10 }, allow_nil: true
+
+  def all_dates
+    schedules.map {|sch| sch.dates}.flatten.uniq
+  end
 end
