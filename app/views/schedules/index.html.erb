@@ -12,6 +12,7 @@
   <thead>
     <th>Begins</th>
     <th>Ends</th>
+    <th>FQ</th>
     <th>Title</th>
     <th>Area Focus</th>
     <th>Description</th>
@@ -22,6 +23,7 @@
         <tr>
           <td class="col-md-1"><%= schedule.start_date.strftime("%h %g %a") %></td>
           <td class="col-md-1"><%= schedule.end_date.strftime("%h %g %a") %></td>
+          <td class="col-md-1"><%= schedule.frequency_interval %></td>
           <td class="col-md-2"><%= schedule.title %></td>
           <td class="col-md-2"><%= schedule.area_focus %></td>
           <td class="col-md-4"><%= schedule.description %></td>
