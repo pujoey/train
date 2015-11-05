@@ -17,14 +17,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
+html, body {
+  height: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #eee;
 }
 
 .jumbotron {
-
+  padding-top: none;
   height: 100%;
   background-image: url('welcome_img.jpg');
   background-size: cover;

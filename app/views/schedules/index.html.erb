@@ -40,19 +40,19 @@
   <table class='table table-bordered table-responsive'>
     <thead>
       <tr>
-        <th>Sun</th>
-        <th>Mon</th>
-        <th>Tues</th>
-        <th>Wed</th>
-        <th>Thurs</th>
-        <th>Fri</th>
-        <th>Sat</th>
+        <th class='text-center'>Sun</th>
+        <th class='text-center'>Mon</th>
+        <th class='text-center'>Tues</th>
+        <th class='text-center'>Wed</th>
+        <th class='text-center'>Thurs</th>
+        <th class='text-center'>Fri</th>
+        <th class='text-center'>Sat</th>
       </tr>
     </thead>
     <% number_of_weeks.times do |i| %>
       <tr>
         <% 7.times do |j| %>
-          <td>
+          <td class="col-sm-1">
             <%= @current_day_number = day_number(i, j) %>
             <% if current_user.all_dates.include? Date.parse("#{@current_day_number} #{this_month}") %>
               <p>WORK OUT!</p>
