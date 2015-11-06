@@ -15,7 +15,7 @@
         </div>
       <% end %>
 
-      <h3 class="form-signin-heading">Contact Trainer</h3>
+      <h3 class="form-signin-heading">Contact <%= current_user.first_name %></h3>
 
       <div class="field">
         <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
