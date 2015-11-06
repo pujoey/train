@@ -58,8 +58,8 @@
         <% 7.times do |j| %>
           <td class="col-sm-1 text-left">
             <%= @current_day_number = day_number(i, j) %>
-            <% if current_user.all_dates.include? Date.parse("#{@current_day_number} #{this_month}") %>
-                  <h3 style="color: MediumSpringGreen" class='glyphicon glyphicon-flash text-right'></h3>
+            <h4><% if current_user.all_dates.include? Date.parse("#{@current_day_number} #{this_month}") %></h4>
+                  <h3 style="color: white" class='btn btn-danger glyphicon glyphicon-heart text-right'></h3>
             <% end %>
           </td>
         <% end %>
