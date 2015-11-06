@@ -1,5 +1,5 @@
 # Train
-![Train](https://i.imgur.com/MXEk7Do.png =300x)
+![Train](https://i.imgur.com/MXEk7Do.png =100x)
 
 [Link to App on Heroku](https://glacial-lowlands-2707.herokuapp.com/)
 [Link to Wireframe & ERD on Trello](https://trello.com/b/VBxokcZL/wdi-project-2-train)
