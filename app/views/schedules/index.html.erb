@@ -59,7 +59,7 @@
           <td class="col-sm-1 text-left">
             <%= @current_day_number = day_number(i, j) %>
             <% if current_user.all_dates.include? Date.parse("#{@current_day_number} #{this_month}") %>
-              <p>WORK OUT!</p>
+                  <h3 style="color: MediumSpringGreen" class='glyphicon glyphicon-flash text-right'></h3>
             <% end %>
           </td>
         <% end %>
