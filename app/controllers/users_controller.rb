@@ -11,6 +11,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params["id"])
+    weight= current_user.current_weight * 0.45
+    height = current_user.height*0.025
+    @bmi = weight / (height*height)
+
   end
 
   def create
@@ -45,7 +49,6 @@ class UsersController < ApplicationController
     end
   end
 
-  private
     # Implement Strong Params
     def user_params
       params.require(:user).permit(:account_name, :password, :password_confirmation, :email, :first_name, :middle_man, :last_name, :image_uri, :address1, :address2, :city, :zip, :current_weight, :goal_weight, :reach_goal_by, :height)
