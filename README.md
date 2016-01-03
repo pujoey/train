@@ -14,7 +14,6 @@ Be deployed online (Heroku) and accessible to the public.
 ### Project Wireframe
 
 ![Train](https://i.imgur.com/MXEk7Do.png =300x)
-
 [Link to Wireframe & ERD on Trello](https://trello.com/b/VBxokcZL/wdi-project-2-train)
 
 
