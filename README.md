@@ -43,10 +43,10 @@ Be deployed online (Heroku) and accessible to the public.
 ### Project Challenges
 
 - Apply **Ruby**, **RoR**, **PostgreSQL** skill learned in class after learning it for 2 weeks to make a fullstack application.
-- Familirize myself with principles such as **MVC** (Model, View, Controller), **RESTful CRUDing** design, and RoR's **convention over configuration**.
+- Familiarize myself with principles such as **MVC** (Model, View, Controller), **RESTful CRUDing** design, and RoR's **convention over configuration**.
 - Design a working **ERD** (Entity Relational Diagram) and following Rail's **ORM** (Object Relational Mapping) and **Active Record** schema conventions.
-- Implmenting **Authentication** by building user models with hashed password authorization Rail's gem **"bcrypt"** to grant different access, and build signup/login **ERB** (Embedded Ruby) views in to the app.
-- Explore and implment **Calendar** function into app without using Gem.
+- Implementing **Authentication** by building user models with hashed password authorization Rail's gem **"bcrypt"** to grant different access, and build signup/login **ERB** (Embedded Ruby) views in to the app.
+- Explore and implement **Calendar** function into app without using Gem.
 - Contact actual trainer to find out what useful functions are needed for the app in order to determine the **business requirements**.
 
 
