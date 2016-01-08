@@ -1,7 +1,22 @@
 <img align="left" alt="GA logo." title="General Assemb.ly" src="https://github.com/generalassembly/ga-ruby-on-rails-for-devs/raw/master/images/ga.png" height="90px">
 
 # WDI DTLA 6 Project 2 - Train
+
+![Train](https://i.imgur.com/OvpdpkE.png =300x)
+[Link to Wireframe & ERD on Trello](https://trello.com/b/VBxokcZL/wdi-project-2-train)
+
 ---
+
+
+### About This App
+
+
+Most trainers keep clients' sessions and body stats data on their phone in a notepad which is often inaccurate and prone to neglect to update. Trainers and their clients can maintain clients' body stats in a centralized database accessible by multi-platforms.
+
+This app is for personal trainers to keep track of clients' sessions with calendar and for clients to keep track of their own goals and progress.  I made this app after speaking to an actual body trainer to find out his unique needs for a website.    
+
+---
+
 ### Project Requirement
 
 - Have at least 2 models (more if they make sense) – one representing someone using your application, and at least one more that represents the main functional idea for your app.
@@ -9,13 +24,6 @@
 - Have complete RESTful routes for at least one of your resources with GET, POST, PUT/PATCH, and DELETE.
 - Have semantically clean HTML and CSS.
 Be deployed online (Heroku) and accessible to the public.
-
----
-### Project Wireframe
-
-![Train](https://i.imgur.com/MXEk7Do.png =300x)
-[Link to Wireframe & ERD on Trello](https://trello.com/b/VBxokcZL/wdi-project-2-train)
-
 
 ---
 ### Technology Used
@@ -41,16 +49,6 @@ Be deployed online (Heroku) and accessible to the public.
 - Explore and implment **Calendar** function into app without using Gem.
 - Contact actual trainer to find out what useful functions are needed for the app in order to determine the **business requirements**.
 
----
-
-### App Background
-
-**Problem**:  Most trainers keep clients' sessions and body stats data on their phone in a notepad which is often inaccurate and prone to neglect to update.  Both trainer and their clients should maintain clients' body stats in centralized location accessible by multi-platforms.
-
----
-### App Description
-
-This app is for personal trainers to keep track of clients' sessions and for clients to keep track of their own progress
 
 ---
 ### Completed
