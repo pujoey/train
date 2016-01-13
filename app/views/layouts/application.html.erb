@@ -34,7 +34,7 @@
           <% if current_user.class == User.last.class %>
             <li><%= link_to "Progress", user_path(current_user) %></li>
             <li><%= link_to "Schedule & Calendar", schedules_path %></li>
-            <li><%= link_to "Messages", messages_path %></li>
+            <li><%= link_to "Goals", messages_path %></li>
             <li><%= link_to "Profile", edit_user_path(current_user) %></li>
           <% end %>
 
@@ -42,7 +42,7 @@
           <% if current_user.class == Trainer.last.class %>
             <li><%= link_to "Progress", trainer_path(current_user) %></li>
             <li><%= link_to "Schedule & Calendar", schedules_path %></li>
-            <li><%= link_to "Messages", messages_path %></li>
+            <li><%= link_to "Goals", messages_path %></li>
             <li><%= link_to "Profile", edit_trainer_path(current_user) %></li>
           <% end %>
         </ul>
