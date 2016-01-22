@@ -1,20 +1,36 @@
 
-<p id="notice"  class="alert alert-success"><%= notice %></p>
+<div class="container">
+  <br>
+  <br>
+  <!-- Alert for authorization fails -->
+  <% flash.each do |key, value| %>
+    <% if key == "notice" %>
+      <div class="alert alert-success"><%= value %></div>
+    <% else %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+  <% end %>
 
-<div class="panel panel-primary form-signin">
-  <h2 class="panel-heading form-signin-heading">Progress:</h2>
-  <ul class="list-group">
-    <li class="list-group-item">Current Weight: <%= @user.current_weight %></li>
-    <li class="list-group-item">Goal Weight: <%= @user.goal_weight %></li>
-    <li class="list-group-item">Reach Goal By: <%= @user.reach_goal_by %></li>
-    <li class="list-group-item">Weight Loss Goal: </li>
-      <div class="progress">
-        <div class="progress-bar progress-bar-info progress-bar-striped"
-          role="progressbar" aria-valuenow="60" aria-valuemin="0"
-          aria-valuemax="100" style="width: 60%;">60%
+  <div class="panel panel-primary form-signin">
+    <h2 class="panel-heading form-signin-heading">Progress:</h2>
+    <ul class="list-group">
+      <li class="list-group-item">Current Weight: <strong><%= @user.current_weight %> lbs</strong></li>
+      <li class="list-group-item">Goal Weight: <strong><%= @user.goal_weight %> lbs</strong></li>
+      <li class="list-group-item">Weight Loss Goal: <strong><%= @user.current_weight - @user.goal_weight %> lbs</strong></li>
+        <div class="progress">
+          <div class="progress-bar progress-bar-info progress-bar-striped"
+            role="progressbar" aria-valuenow="60" aria-valuemin="0"
+            aria-valuemax="100" style="width: <%= number_to_percentage(@percent, precision: 0)  %>;"><strong><%= number_to_percentage(@percent, precision: 0)  %></strong>
+          </div>
         </div>
-      </div>
-    <li class="list-group-item">BMI: <%= @bmi.round(2) %></li>
-    <li class="list-group-item">(A healthy BMI ranges between 19 and 25.)</li>
-  </ul>
+      <li class="list-group-item">Reach Goal By: <strong><%= @user.reach_goal_by %></strong></li>
+      <li class="list-group-item">Body Mass Index: <strong><%= @bmi.round(1) %></strong> </li>
+      <li class="list-group-item">BMI Categories: <br>
+                                  Underweight = <18.5 <br>
+                                  Normal weight = 18.5–24.9 <br>
+                                  Overweight = 25–29.9 <br>
+                                  Obesity = BMI of 30 or greater</li>
+    </ul>
+  </div>
+
 </div>

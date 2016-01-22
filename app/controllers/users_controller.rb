@@ -11,9 +11,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params["id"])
-    weight= current_user.current_weight * 0.45
-    height = current_user.height*0.025
-    @bmi = weight / (height*height)
+
+    # calculate BMI
+    weight= @user.current_weight
+    height = @user.height
+    @bmi = weight.to_f / (height*height) * 703
+
+    # calculate percentage
+    @percent = @user.goal_weight.to_f / @user.current_weight * 100
 
   end
 
