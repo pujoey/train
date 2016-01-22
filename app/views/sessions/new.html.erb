@@ -3,19 +3,26 @@
 
 <div class="container form-signin">
     <!-- Alert for authorization fails -->
-    <div id="alert" class="alert alert-success"><%= alert %></div>
+    <% flash.each do |key, value| %>
+      <% if key == "notice" %>
+        <div class="alert alert-success"><%= value %></div>
+      <% else %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    <% end %>
 
     <!-- Sign in fields and submit button -->
     <%= form_tag sessions_path do %>
 
-      <h2 class="form-signin-heading">Please sign in</h2>
+      <h2 class="form-signin-heading">Sign In</h2>
+      <p>For demo purpose, go ahead and log in to with <strong>jo1</strong> and <strong>1234</strong> or create new user account to start using the app.</p>
 
       <div class="field">
-        <%= text_field_tag :account_name, params[:account_name], class: 'form-control', placeholder: 'Account Name'%>
+        <%= text_field_tag :account_name, params[:account_name], class: 'form-control', value: "jo1" %>
       </div>
 
       <div class="field">
-        <%= password_field_tag :password, params[:password], class: 'form-control', placeholder: 'Password' %>
+        <%= password_field_tag :password, params[:password], class: 'form-control', value: "1234" %>
       </div>
 
       <br>
